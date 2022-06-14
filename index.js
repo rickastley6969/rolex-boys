@@ -70,3 +70,7 @@ function validateBook(book) {
 	const schema = { title: Joi.string().min(3).required() };
 	return Joi.validate(book, schema);
 }
+
+// Step 1 : Run npm install express
+// Step 2: Run node index.js
+// Step 3: go to localhost:3000

@@ -23,11 +23,6 @@ app.get("/api/books/:id", (req, res) => {
 });
 //CREATE Request Handler
 app.post("/api/books", (req, res) => {
-	const { error } = validateBook(req.body);
-	if (error) {
-		res.status(400).send(error.details[0].message);
-		return;
-	}
 	const book = {
 		id: books.length + 1,
 		title: req.body.title,
@@ -42,11 +37,7 @@ app.put("/api/books/:id", (req, res) => {
 		res.status(404).send(
 			'<h2 style="font-family: Malgun Gothic; color:darkred;">Not Found!! </h2>'
 		);
-	const { error } = validateBook(req.body);
-	if (error) {
-		res.status(400).send(error.details[0].message);
-		return;
-	}
+	
 	book.title = req.body.title;
 	res.send(book);
 });
@@ -66,10 +57,7 @@ app.listen(3000, () => {
 	console.log("Listening");
 });
 
-function validateBook(book) {
-	const schema = { title: Joi.string().min(3).required() };
-	return Joi.validate(book, schema);
-}
+
 
 // Step 1 : Run npm install express
 // Step 2: Run node index.js

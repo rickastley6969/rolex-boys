@@ -1,0 +1,7 @@
+package soapp;
+
+public interface Names {
+	public void setName(String name);
+	public String getName();
+	public int getAge();
+}
